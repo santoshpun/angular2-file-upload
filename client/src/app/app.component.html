@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span class="glyphicon glyphicon-cloud-upload"></span>
+          <h2>File Uploader</h2>
+          <button class="btn btn-lg upload-btn" type="button">Upload File</button>
+        </div>
+
+
+        <div style="margin:20px;">
+          <alert type="success" *ngIf="message">
+            <strong>Success!</strong> {{message}}
+          </alert>
+
+          <img [src]="uploadedImage" *ngIf="uploadedImage" width="300px;" height="200px;" />
+
+        </div>
+
+        <input type="file" ngFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" single id="upload-input">
+
+        <div *ngIf="uploading">
+          <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+          <span class="sr-only">Loading...</span>
+        </div>
+
+
+        <div style="margin-top:20px;" *ngIf="isUploaded">
+          <button type="button" class="btn btn-primary" (click)="startUpload()">
+                    <span>Start upload</span>
+                </button>
+
+          <button type="button" class="btn btn-danger" (click)="clear()">
+                    <span>Remove</span>
+                </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
